@@ -72,6 +72,8 @@ describe("Operaciones Logicas", () => {
     let y;
     let z;
 
+    x = "pepe";
+
     expect(x > 4).toBe(true);
     expect(y < 5).toBe(true);
     expect(z >= 3).toBe(true);
