@@ -19,7 +19,7 @@ describe("Strings", () => {
 
     let str3 = "cosa";
 
-    suma = str1 == str3 ? str1 + str3 : '';
+    suma = str1 === str3 ? str1 + str3 : '';
 
     expect(suma).toBe("");
   });
@@ -42,10 +42,7 @@ describe("Strings", () => {
   //Verificar si un string comienza con la palabra "Hola" o si termina con la palabra "Adios"
   it("Inico o Fin", () => {
     let str = 'Hola mundo';
-    let strByWords = str.split(' ')
-    let firstWord = strByWords.at(0)
-    let lastWord = strByWords.at(-1)
-    let result = firstWord == 'Hola' || lastWord == 'Adios';
+    let result = str.startsWith('Hola') || str.endsWith('Adios')
 
     expect(result).toBe(true);
   });
