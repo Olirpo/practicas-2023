@@ -3,45 +3,55 @@ import { sum, pot, isMultiple, fibonacci, removeSpaces, mayusMinus, oldDate } fr
 
 describe("Funciones", () => {
   it("Matematicas", () => {
-    /**
-     * Programar una funcion que reciba 2 numeros enteros y devuelva la suma de los mismos
-     */
+    
+    const sum =  (int1,int2) => {
+      return int1 + int2
+    }
+
     expect(sum(2, 2)).toBe(4);
 
-    /**
-     * Programar una funcion que reciba un numero entero n y un numero entero x.
-     * Esta funcion debe retornar la x potencia del numero n, es decir n^x
-     */
+    const pot = (a,b) => {
+      return a**b
+    }
     expect(pot(2, 4)).toBe(16);
 
-    /**
-     * Programar una funcion que reciba un numero entero n y un arreglo de numeros enteros arr
-     * Esta funcion debe devolver true si si n es multiplo de todos los numeros en arr
-     */
+    const isMultiple = (num,arrDiv) => {
+      return arrDiv.every(e => (num%e)==0)
+    }
 
     expect(isMultiple(8, [2, 4])).toBe(true);
     expect(isMultiple(8, [2, 3])).toBe(false);
 
-    /**
-     * Programar una funcion que reciba un numero entero n
-     * Esta funcion deve devolver un arreglo con todos los numeros de fibonacci hasta n inclusive
-     */
+    const fibonacci = (maxN) => {
+      let fibonacci = [1]
+      while (fibonacci.at(-1) <= maxN){
+        const prev1 = fibonacci.at(-1)
+        const prev2 = fibonacci.at(-2) ? fibonacci.at(-2) : 0
+        fibonacci.push(prev1 + prev2)
+      }
+      return fibonacci.slice(0,-1)
+    }
 
-    expect(fibonacci(21)).toStrictEqual([1, 1, 2, 3, 5, 8, 13, 21]);
+    expect(fibonacci(21)).toStrictEqual([ 1, 1, 2, 3, 5, 8, 13, 21]);
   });
 
   it("Strings", () => {
-    /**
-     * Programar una funcion que reciba un String str
-     * Esta funcion debe retortar el mismo string pero sin espacios
-     */
+
+    const removeSpaces = (string)=>{
+      return string.replaceAll(" ", "")
+    }
+
     expect(removeSpaces("Hola soy una cadena de caracteres")).toBe("Holasoyunacadenadecaracteres");
 
-    /**
-     * Programar una funcion que reciba un String str
-     * Esta funcion debe hacer que todas las palabras pares comiencen con mayuscula y tengan el resto en minuscula
-     * y las palabras inpares deben comenzar con mayuscula y tener el resto en mayuscula
-     */
+    const mayusMinus = (string) => {
+      const palabrasSeparadas = string.split(' ')
+      const cantidadPalabras = palabrasSeparadas.lenght;
+      for(let i = 0; i<cantidadPalabras-1; i++){
+        
+      }
+
+      }
+    }
     expect(mayusMinus("Hola soy una cadena de caracteres")).toBe("hOLA Soy uNA Cadena dE Caracteres");
   });
   it("Fechas", () => {

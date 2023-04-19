@@ -3,46 +3,46 @@ import { describe, it, expect } from "vitest";
 describe("Operaciones Algebraicas", () => {
   // asignar los valores necesarios para que las operaciones den el resultado esperado
   it("Suma", () => {
-    let x;
-    let y;
-    let z;
+    let x = 5;
+    let y = 0;
+    let z = 5;
 
     expect(x + y).toBe(5);
     expect(x + y + z).toBe(10);
   });
   it("Resta", () => {
-    let x;
-    let y;
-    let z;
+    let x = 6;
+    let y = 1;
+    let z = -5;
 
     expect(x - y).toBe(5);
     expect(x - y - z).toBe(10);
   });
   it("Multiplicacion", () => {
-    let x;
-    let y;
-    let z;
+    let x = 5;
+    let y = 2;
+    let z = 10;
 
     expect(x * y).toBe(10);
     expect(x * y * z).toBe(100);
   });
   it("Division", () => {
-    let x;
-    let y;
-    let z;
+    let x = 10;
+    let y = 1;
+    let z = 2;
 
     expect(x / y).toBe(10);
     expect(x / y / z).toBe(5);
   });
   it("Resto", () => {
-    let x;
-    let y;
+    let x = 5;
+    let y = 3;
 
     expect(x % y).toBe(2);
   });
   it("Operadores Unarios", () => {
     let x = 0;
-
+    x++
     // Utilizar un operador unario para cambiar el valor de x
     expect(x).toBe(1);
   });
@@ -50,29 +50,29 @@ describe("Operaciones Algebraicas", () => {
 
 describe("Operaciones Logicas", () => {
   it("OR", () => {
-    let x;
-    let y;
+    let x = true;
+    let y = false;
 
     expect(x || y).toBe(true);
   });
   it("AND", () => {
-    let x;
-    let y;
+    let x = true;
+    let y = true;
 
     expect(x && y).toBe(true);
   });
   it("NOT", () => {
-    let x = false;
+    let x = true;
     let y = !x;
 
     expect(y).toBe(false);
   });
   it("Comparaciones", () => {
-    let x;
-    let y;
-    let z;
+    let x = 3;
+    let y = 1;
+    let z = 3;
 
-    expect(x > 4).toBe(true);
+    expect(x > 2).toBe(true);
     expect(y < 5).toBe(true);
     expect(z >= 3).toBe(true);
     expect(x == "3").toBe(true);
@@ -81,7 +81,7 @@ describe("Operaciones Logicas", () => {
 
   it("Short Circuit Evaluation", () => {
     let x = 10;
-    let y;
+    let y = false;
 
     expect(y || x).toBe(10);
     expect(y && x).toBe(false);
