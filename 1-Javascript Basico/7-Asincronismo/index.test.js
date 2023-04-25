@@ -3,7 +3,6 @@ import { describe, it, expect } from "vitest";
 describe("asincronismo", () => {
   it("Promesas", () => {
     
-
     const promise = new Promise((res,err)=>{
       setTimeout(() => {
         res('success')
@@ -13,29 +12,29 @@ describe("asincronismo", () => {
     promise.then((res) => expect(res).toBe("success"));
   });
   it("Async Await", async () => {
-    /**
-     * Consuma la misma promesa del test anterior pero utilizando async await y almacene el resultado en 'res'
-     */
+    
+    const promise = new Promise((res,err)=>{
+      setTimeout(() => {
+        res('success')
+      }, 3000);
+    });
 
-    const promise = new Promise();
-
-    let res;
+    let res = await promise;
 
     expect(res).toBe("success");
   });
   it("Consumo de API", async () => {
-    /**
-     * Use fetch() para consumir la api de "https://www.thecocktaildb.com/" y consulte la informacion del trago "Gin and Tonic"
-     * NOTA: para buscar el trago por nombre utilice el siguienre parametro de busqueda: "Gin%20And%20Tonic"
-     */
+    
+    const drink = 'Gin%20And%20Tonic';
 
-    const URL = "https://www.thecocktaildb.com/api/json/v1/1/";
+    const URL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`;
 
     // response
-    let res;
+    let res = await fetch(URL);
     // cuerpo de la response. res.json()
-    let data;
-
+    let data = await res.json();
+    data = data.drinks[0]
+    console.log(data)
     expect(data.idDrink).toBe("11403");
     expect(data.strDrink).toBe("Gin And Tonic");
   });
@@ -45,10 +44,10 @@ describe("asincronismo", () => {
      */
 
     const promise = new Promise((resolve, reject) => {
-      Math.random() > 0.5 ? resolve("Buena suerte") : reject("Mala suerte");
+      Math.random() > 0.5 ? resolve(":)") : reject(":(");
     });
 
-    const res = "";
+    const res = await promise;
 
     expect(res == ":)" || res == ":(").toBe(true);
   });
