@@ -4,7 +4,7 @@ import { sum, pot, isMultiple, fibonacci, removeSpaces, mayusMinus, oldDate } fr
 describe("Funciones", () => {
   it("Matematicas", () => {
     
-    const sum =  (int1,int2) => {
+    const sum = (int1,int2) => {
       return int1 + int2
     }
 
@@ -23,13 +23,14 @@ describe("Funciones", () => {
     expect(isMultiple(8, [2, 3])).toBe(false);
 
     const fibonacci = (maxN) => {
-      let fibonacci = [1]
-      while (fibonacci.at(-1) <= maxN){
+      let fibonacci = [1, 1]
+      while (fibonacci.at(-1) < maxN){
         const prev1 = fibonacci.at(-1)
-        const prev2 = fibonacci.at(-2) ? fibonacci.at(-2) : 0
+        const prev2 = fibonacci.at(-2)
+        if(prev1+prev2 > maxN){break}
         fibonacci.push(prev1 + prev2)
       }
-      return fibonacci.slice(0,-1)
+      return fibonacci;
     }
 
     expect(fibonacci(21)).toStrictEqual([ 1, 1, 2, 3, 5, 8, 13, 21]);
@@ -44,23 +45,28 @@ describe("Funciones", () => {
     expect(removeSpaces("Hola soy una cadena de caracteres")).toBe("Holasoyunacadenadecaracteres");
 
     const mayusMinus = (string) => {
-      const palabrasSeparadas = string.split(' ')
-      const cantidadPalabras = palabrasSeparadas.lenght;
-      for(let i = 0; i<cantidadPalabras-1; i++){
-        
-      }
+      let palabras = string.split(' ')
+      return palabras.map((word, i, arr)=>{
+        if( i % 2 == 0){
+          return word.charAt(0).toLowerCase() + word.slice(1, word.lenght).toUpperCase()
+        }
+          return word.charAt(0).toUpperCase() + word.slice(1, word.lenght).toLowerCase()
+      })
+        .join(' ')
 
       }
-    }
     expect(mayusMinus("Hola soy una cadena de caracteres")).toBe("hOLA Soy uNA Cadena dE Caracteres");
   });
   it("Fechas", () => {
-    /**
-     * Programar una funcion que reciba 2 fechas en formato string, date1 y date2
-     * Esta funcion debe retornar true si date1 es mas vieja que date2
-     * Ademas debe retornar error si el formato de la fecha es erroneo
-     *  Nota: debe usar la clase Date() de JS
-     */
+const isBefore = (date1,date2)=> {
+  return date1 < date2
+}
+const oldDate = (date1,date2)=>{
+  const newer = new Date(date1)
+  const older = new Date(date2)
+  return isBefore(older,newer)
+}
+
     expect(oldDate("2022-01-01", "2020-01-01")).toBe(true);
     expect(oldDate("2022-01-01", "2023-01-01")).toBe(false);
   });

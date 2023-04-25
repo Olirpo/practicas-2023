@@ -2,11 +2,13 @@ import { describe, it, expect } from "vitest";
 
 describe("asincronismo", () => {
   it("Promesas", () => {
-    /**
-     * Cree una promesa que se cumpla pasados 3seg
-     */
+    
 
-    const promise = new Promise();
+    const promise = new Promise((res,err)=>{
+      setTimeout(() => {
+        res('success')
+      }, 3000);
+    });
 
     promise.then((res) => expect(res).toBe("success"));
   });
