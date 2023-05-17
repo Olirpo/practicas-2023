@@ -12,6 +12,58 @@ describe("Juegos con arreglos", () => {
      * Dada una funcion numberSpiral(n) donde n es un numero entero
      * La funcion debe retornar una matriz que simule una espiral de numeros desde 1 hasta n
      */
+    const numberSpiral = (n) => {
+      const matrix = [];
+      const qOfArrays = Math.ceil(Math.sqrt(n));
+      const mid = Math.floor(qOfArrays / 2);
+      let numeroAImprimir = 1;
+
+      for (let i = 0; i < qOfArrays; i++) {
+        matrix.push([]);
+      }
+      let x = mid;
+      let y = mid;
+      let nivelActual = 0;
+      matrix[y][x] = numeroAImprimir;
+      console.log("x:", x, "   y:", y);
+      console.log("holaaa");
+      while (nivelActual < qOfArrays) {
+        //Derecha
+        for (let i = 1; i <= nivelActual * 2 + 1; i++) {
+          if (numeroAImprimir === n) return matrix;
+          numeroAImprimir++;
+          x++;
+          matrix[y][x] = numeroAImprimir;
+          console.log("x:", x, "   y:", y);
+        }
+        //Arriba
+        for (let i = 1; i <= nivelActual * 2 + 1; i++) {
+          if (numeroAImprimir === n) return matrix;
+          numeroAImprimir++;
+          y--;
+          matrix[y][x] = numeroAImprimir;
+          console.log("x:", x, "   y:", y);
+        }
+        //Izquierda
+        for (let i = 1; i <= nivelActual * 2 + 2; i++) {
+          if (numeroAImprimir === n) return matrix;
+          numeroAImprimir++;
+          x--;
+          matrix[y][x] = numeroAImprimir;
+          console.log("x:", x, "   y:", y);
+        }
+        //Abajo
+        for (let i = 1; i <= nivelActual * 2 + 2; i++) {
+          if (numeroAImprimir === n) return matrix;
+          numeroAImprimir++;
+          y++;
+          matrix[y][x] = numeroAImprimir;
+          console.log("x:", x, "   y:", y);
+        }
+        nivelActual++;
+      }
+      return matrix;
+    };
 
     expect(numberSpiral(9)).toStrictEqual([
       [5, 4, 3],
