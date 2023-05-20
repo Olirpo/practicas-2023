@@ -5,10 +5,10 @@ describe("Manejo avanzado de arreglos", () => {
     /**
      * Agregar todos los elementos del arreglo 'arr' al arreglo 'arr2' usando el forEach
      */
-    
+
     const arr1 = [1, 2, 3];
     const arr2 = [];
-    arr1.forEach(e=>arr2.push(e))
+    arr1.forEach((e) => arr2.push(e));
 
     expect(arr2).toStrictEqual([1, 2, 3]);
   });
@@ -18,7 +18,7 @@ describe("Manejo avanzado de arreglos", () => {
      */
 
     const arr1 = [1, 2, 3];
-    const arr2 = arr1.map(e=>e+1);
+    const arr2 = arr1.map((e) => e + 1);
 
     expect(arr2).toStrictEqual([2, 3, 4]);
   });
@@ -27,13 +27,13 @@ describe("Manejo avanzado de arreglos", () => {
      * Utilizar el metodo filter para filtrar el arregloy dejar solo los numeros primos
      */
     const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const arr2 = arr1.filter(e=>{
-      if( e === 1) return false
-      for(let i = 2; i <= Math.sqrt(e); i++){
-        if(e % i === 0) return false
+    const arr2 = arr1.filter((e) => {
+      if (e === 1) return false;
+      for (let i = 2; i <= Math.sqrt(e); i++) {
+        if (e % i === 0) return false;
       }
-      return true
-    })
+      return true;
+    });
     expect(arr2).toStrictEqual([2, 3, 5, 7]);
   });
   it("Primos", () => {

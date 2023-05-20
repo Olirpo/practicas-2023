@@ -42,7 +42,7 @@ describe("Operaciones Algebraicas", () => {
   });
   it("Operadores Unarios", () => {
     let x = 0;
-    x++
+    x++;
     // Utilizar un operador unario para cambiar el valor de x
     expect(x).toBe(1);
   });
@@ -72,7 +72,7 @@ describe("Operaciones Logicas", () => {
     let y = 1;
     let z = 3;
 
-    expect(x > 2).toBe(true);
+    expect(x > 4).toBe(true);
     expect(y < 5).toBe(true);
     expect(z >= 3).toBe(true);
     expect(x == "3").toBe(true);
