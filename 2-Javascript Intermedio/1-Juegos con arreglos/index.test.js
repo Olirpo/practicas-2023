@@ -29,35 +29,51 @@ describe("Juegos con arreglos", () => {
       while (nivelActual < qOfArrays) {
         //Derecha
         for (let i = 1; i <= nivelActual * 2 + 1; i++) {
-          if (numeroAImprimir === n) return matrix;
-          numeroAImprimir++;
           x++;
-          matrix[y][x] = numeroAImprimir;
-          console.log("x:", x, "   y:", y);
+          if(matrix.at(-1).length === qOfArrays){
+            return matrix
+          }
+          if (numeroAImprimir >= n) {
+            matrix[y][x] = -1
+          } else {
+            numeroAImprimir++;
+            matrix[y][x] = numeroAImprimir;
+          }
+          
+          //console.log("x:", x, "   y:", y, '   numero:',matrix[y][x], matrix);
         }
         //Arriba
         for (let i = 1; i <= nivelActual * 2 + 1; i++) {
-          if (numeroAImprimir === n) return matrix;
-          numeroAImprimir++;
-          y--;
-          matrix[y][x] = numeroAImprimir;
-          console.log("x:", x, "   y:", y);
+          y--
+          if (numeroAImprimir >= n) {
+            matrix[y][x] = -1
+          } else {
+            numeroAImprimir++;
+            matrix[y][x] = numeroAImprimir;
+          }
+          //console.log("x:", x, "   y:", y, '   numero:',matrix[y][x], matrix);
         }
         //Izquierda
         for (let i = 1; i <= nivelActual * 2 + 2; i++) {
-          if (numeroAImprimir === n) return matrix;
-          numeroAImprimir++;
-          x--;
-          matrix[y][x] = numeroAImprimir;
-          console.log("x:", x, "   y:", y);
+          x--
+          if (numeroAImprimir >= n) {
+            matrix[y][x] = -1
+          } else {
+            numeroAImprimir++;
+            matrix[y][x] = numeroAImprimir;
+          }
+          //console.log("x:", x, "   y:", y, '   numero:',matrix[y][x], matrix);
         }
         //Abajo
         for (let i = 1; i <= nivelActual * 2 + 2; i++) {
-          if (numeroAImprimir === n) return matrix;
-          numeroAImprimir++;
-          y++;
-          matrix[y][x] = numeroAImprimir;
-          console.log("x:", x, "   y:", y);
+          y++
+          if (numeroAImprimir >= n) {
+            matrix[y][x] = -1
+          } else {
+            numeroAImprimir++;
+            matrix[y][x] = numeroAImprimir;
+          }
+          //console.log("x:", x, "   y:", y, '   numero:',matrix[y][x], matrix);
         }
         nivelActual++;
       }
