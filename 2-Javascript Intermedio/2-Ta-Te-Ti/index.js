@@ -3,6 +3,7 @@ const readline = require("readline/promises").createInterface({
   output: process.stdout,
 });
 const jugar = async () => {
+  let ganador = [false];
   let turno = 0;
   const J1 = "o";
   const J2 = "x";
@@ -17,7 +18,7 @@ const jugar = async () => {
   console.log("Bienvenido al ultimo TA-TE-TI!");
   console.log("Para jugar necesitarás un amigo");
 
-  while (turno < 9) {
+  while (turno < 9 && !ganador[0]) {
     let coords = {};
     console.table(matrix);
     const jugador = turno % 2 === 0 ? "Jugador 1" : "Jugador 2";
@@ -34,9 +35,18 @@ const jugar = async () => {
     }
     matrix[coords.y][coords.x] = figuraJugador;
     turno++;
+    ganador = checkForWinner(matrix);
+  }
+  if (ganador[0]) {
+    console.clear();
+    console.table(matrix);
+    console.log(ganador[1]);
+  } else {
+    console.clear();
+    console.table(matrix);
+    console.log("Ningun jugador pudo consagrarse! Buen partido");
   }
 };
-
 const turnoJugador = async (jugador) => {
   let x =
     (await readline.question(
@@ -53,25 +63,32 @@ const isPositionValid = (coords, matrix) => {
   return !Boolean(matrix[y][x]);
 };
 const checkForWinner = (matrix) => {
-  //Chequeo Filas
-  for (let i = 0; i < matrix.lenght; i++) {
+  console.log(matrix.at(-3));
+  for (let i = 0; i < matrix.length; i++) {
+    console.log(matrix[i].at(-3));
     if (matrix[i].every((e) => e === "o")) {
       return [true, "GANADORRR o, jugador 1! Felicitaciones!"];
     } else if (matrix[i].every((e) => e === "x")) {
       return [true, "GANADORRR x, jugador 2! Felicitaciones!"];
     } // Chequeo columnas
-    else if (matrix.every((e) => e[index] === "o")) {
+    else if (matrix.every((e) => e[i] === "o")) {
       return [true, "GANADORRR o, jugador 1! Felicitaciones!"];
-    } else if (matrix.every((e) => e[index] === "x")) {
+    } else if (matrix.every((e) => e[i] === "x")) {
+      console.log("COLUMNA");
       return [true, "GANADORRR x, jugador 2! Felicitaciones!"];
     }
   }
+  //////// DIAGONAL IZQ A DERECHA
+  if (matrix.every((e, index) => e[index] === "o")) {
+    return [true, "GANADORRR o, jugador 1! Felicitaciones!"];
+  } else if (matrix.every((e, index) => e[index] === "x")) {
+    return [true, "GANADORRR x, jugador 2! Felicitaciones!"];
+  } else if (matrix.every((e, index) => e.at((index + 1) * -1) === "o")) {
+    return [true, "GANADORRR o, jugador 1! Felicitaciones!"];
+  } else if (matrix.every((e, index) => e.at((index + 1) * -1) === "x")) {
+    return [true, "GANADORRR x, jugador 2! Felicitaciones!"];
+  } else {
+    return [false];
+  }
 };
-//jugar();
-console.log(
-  checkForWinner([
-    ["o", "x", "o"],
-    ["o", "o", "o"],
-    ["o", "x", "x"],
-  ])
-);
+jugar();
