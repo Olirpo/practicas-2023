@@ -1,12 +1,40 @@
 import { describe, it, expect } from "vitest";
-import { sum, pot, isMultiple, fibonacci, removeSpaces, mayusMinus, oldDate } from "../answer";
+// import { sum, pot, isMultiple, fibonacci, removeSpaces, mayusMinus, oldDate } from "../answer";
 
 describe("Funciones", () => {
   it("Matematicas", () => {
+<<<<<<< HEAD
     
     const sum = (int1,int2) => {
       return int1 + int2
     }
+=======
+    /**
+     * Programar una funcion que reciba 2 numeros enteros y devuelva la suma de los mismos
+     */
+    const sum = (a, b) => a + b;
+    const pot = (a, b) => a ** b;
+    const isMultiple = (n, arr) => {
+      let multiple = true;
+      arr.forEach((e) => {
+        multiple = multiple && n % e == 0;
+      });
+      return multiple;
+    };
+    // f(n) = f(n-1) + f(n-2)
+    const fibonacci = (n) => {
+      // console.log(n);
+      // if (n <= 1) return [1];
+
+      // return [...(fibonacci(n - 1) + fibonacci(n - 2))];
+      const arr = [1, 1];
+      while (arr.at(-1) < n) {
+        arr.push(arr.at(-1) + arr.at(-2));
+      }
+
+      return arr;
+    };
+>>>>>>> 014e1fb7375a001894ea671d7200b8ba787e743e
 
     expect(sum(2, 2)).toBe(4);
 
@@ -44,6 +72,7 @@ describe("Funciones", () => {
 
     expect(removeSpaces("Hola soy una cadena de caracteres")).toBe("Holasoyunacadenadecaracteres");
 
+<<<<<<< HEAD
     const mayusMinus = (string) => {
       let palabras = string.split(' ')
       return palabras.map((word, i, arr)=>{
@@ -55,6 +84,23 @@ describe("Funciones", () => {
         .join(' ')
 
       }
+=======
+    const mayusMinus = (str) => {
+      return str
+        .split(" ")
+        .map((word, i) => {
+          if (i % 2 == 0) return word.charAt(0).toUpperCase() + word.slice(1, word.length).toLowerCase();
+          return word.charAt(0).toLowerCase() + word.slice(1, word.length).toUpperCase();
+        })
+        .join(" ");
+    };
+
+    /**
+     * Programar una funcion que reciba un String str
+     * Esta funcion debe hacer que todas las palabras pares comiencen con mayuscula y tengan el resto en minuscula
+     * y las palabras inpares deben comenzar con minuscula y tener el resto en mayuscula
+     */
+>>>>>>> 014e1fb7375a001894ea671d7200b8ba787e743e
     expect(mayusMinus("Hola soy una cadena de caracteres")).toBe("hOLA Soy uNA Cadena dE Caracteres");
   });
   it("Fechas", () => {
